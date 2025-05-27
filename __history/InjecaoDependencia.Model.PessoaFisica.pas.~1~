@@ -1,0 +1,7 @@
+unit InjecaoDependencia.Model.PessoaFisica;
+
+interface
+
+implementation
+
+end.
