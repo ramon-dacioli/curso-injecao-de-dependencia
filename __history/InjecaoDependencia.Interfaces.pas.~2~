@@ -17,7 +17,7 @@ type
 
     ['{5487612D-3E09-4F39-916F-9F1C05801C11}']
 
-    function CNPJ ( aValue : String ) : iPessoaJuridica; overload;
+    function CNPJ ( aValue : String ) : iPessoaFisica; overload;
     function CNPJ : String; overload;
 
   end;

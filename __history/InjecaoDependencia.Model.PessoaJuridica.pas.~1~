@@ -1,0 +1,7 @@
+unit InjecaoDependencia.Model.PessoaJuridica;
+
+interface
+
+implementation
+
+end.
