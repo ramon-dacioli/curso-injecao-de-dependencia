@@ -5,7 +5,8 @@ uses
   InjecaoDependencia.View.Principal in 'InjecaoDependencia.View.Principal.pas' {Form1},
   InjecaoDependencia.Interfaces in 'InjecaoDependencia.Interfaces.pas',
   InjecaoDependencia.Model.PessoaFisica in 'InjecaoDependencia.Model.PessoaFisica.pas',
-  InjecaoDependencia.Model.PessoaJuridica in 'InjecaoDependencia.Model.PessoaJuridica.pas';
+  InjecaoDependencia.Model.PessoaJuridica in 'InjecaoDependencia.Model.PessoaJuridica.pas',
+  InjecaoDependencia.Model.Endereco in 'InjecaoDependencia.Model.Endereco.pas';
 
 {$R *.res}
 

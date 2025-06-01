@@ -130,6 +130,7 @@
         <DCCReference Include="InjecaoDependencia.Interfaces.pas"/>
         <DCCReference Include="InjecaoDependencia.Model.PessoaFisica.pas"/>
         <DCCReference Include="InjecaoDependencia.Model.PessoaJuridica.pas"/>
+        <DCCReference Include="InjecaoDependencia.Model.Endereco.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

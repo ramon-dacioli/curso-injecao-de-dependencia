@@ -9,7 +9,8 @@ type
 
   TPessoaJuridica = class(TInterfacedObject, iPessoaJuridica)
   private
-    FCNPJ : String;
+    FCNPJ: String;
+    FEndereco: iEndereco<iPessoaJuridica>;
   public
     constructor Create;
     destructor Destroy; override;
@@ -17,9 +18,13 @@ type
 
     function CNPJ(aValue: String): iPessoaJuridica; overload;
     function CNPJ: String; overload;
+    function Endereco: iEndereco<iPessoaJuridica>;
   end;
 
 implementation
+
+uses
+  InjecaoDependencia.Model.Endereco;
 
 { TPessoaJuridica }
 
@@ -36,13 +41,18 @@ end;
 
 constructor TPessoaJuridica.Create;
 begin
-
+  FEndereco := TEndereco<iPessoaJuridica>.New(Self);
 end;
 
 destructor TPessoaJuridica.Destroy;
 begin
 
   inherited;
+end;
+
+function TPessoaJuridica.Endereco: iEndereco<iPessoaJuridica>;
+begin
+  Result := FEndereco;
 end;
 
 class function TPessoaJuridica.New: iPessoaJuridica;

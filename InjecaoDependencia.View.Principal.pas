@@ -4,10 +4,15 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs;
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls;
 
 type
   TForm1 = class(TForm)
+    Memo1: TMemo;
+    Button1: TButton;
+    Button2: TButton;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -20,5 +25,34 @@ var
 implementation
 
 {$R *.dfm}
+
+uses InjecaoDependencia.Model.PessoaFisica,
+  InjecaoDependencia.Model.PessoaJuridica, InjecaoDependencia.Interfaces;
+
+procedure TForm1.Button1Click(Sender: TObject);
+var
+  PF : iPessoaFisica;
+begin
+  PF := TPessoaFisica.New;
+
+  PF.CPF('12345678900')
+    .Endereco
+      .Rua('Rua dos bobos');
+
+  Memo1.Lines.Add(PF.CPF + ' ' + PF.Endereco.Rua);
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+var
+  PJ : iPessoaJuridica;
+begin
+  PJ := TPessoaJuridica.New;
+
+  PJ.CNPJ('12345678000910')
+    .Endereco
+      .Rua('Rua dos bobos Juridicos');
+
+  Memo1.Lines.Add(PJ.CNPJ + ' ' + PJ.Endereco.Rua);
+end;
 
 end.

@@ -20,6 +20,7 @@ type
 
     function CPF(aValue: String): iPessoaFisica; overload;
     function CPF: String; overload;
+    function Endereco : iEndereco<iPessoaFisica>;
 
   end;
 
@@ -29,6 +30,7 @@ type
 
     function CNPJ(aValue: String): iPessoaJuridica; overload;
     function CNPJ: String; overload;
+    function Endereco : iEndereco<iPessoaJuridica>;
 
   end;
 

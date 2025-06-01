@@ -9,6 +9,7 @@ type
   TPessoaFisica = class(TInterfacedObject, iPessoaFisica)
     private
       FCPF : String;
+      FEndereco : iEndereco<iPessoaFisica>;
     public
       constructor Create;
       destructor Destroy; override;
@@ -16,9 +17,13 @@ type
 
       function CPF ( aValue : String ) : iPessoaFisica; overload;
       function CPF : String; overload;
+      function Endereco : iEndereco<iPessoaFisica>;
   end;
 
 implementation
+
+uses
+  InjecaoDependencia.Model.Endereco;
 
 { TPessoaFisica }
 
@@ -35,13 +40,18 @@ end;
 
 constructor TPessoaFisica.Create;
 begin
-
+  FEndereco := TEndereco<iPessoaFisica>.New(Self);
 end;
 
 destructor TPessoaFisica.Destroy;
 begin
 
   inherited;
+end;
+
+function TPessoaFisica.Endereco: iEndereco<iPessoaFisica>;
+begin
+  Result := FEndereco;
 end;
 
 class function TPessoaFisica.New: iPessoaFisica;
