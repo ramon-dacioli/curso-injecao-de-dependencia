@@ -1,0 +1,7 @@
+unit InjecaoDependencia.Model.Endereco;
+
+interface
+
+implementation
+
+end.

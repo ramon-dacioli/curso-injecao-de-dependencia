@@ -10,7 +10,6 @@ type
 
     function Rua(aValue: String): iEndereco<T>; overload;
     function Rua: String; overload;
-    function &End : T;
 
   end;
 

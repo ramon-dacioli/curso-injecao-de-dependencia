@@ -1,0 +1,37 @@
+unit InjecaoDependencia.Model.Endereco;
+
+interface
+
+uses
+  InjecaoDependencia.Interfaces;
+
+type
+  TEndereco<T> = class(TInterfacedObject, iEndereco<T>)
+  private
+  public
+    constructor Create;
+    destructor Destroy; override;
+    class function New : iEndereco<T>;
+  end;
+
+implementation
+
+{ TEndereco<T> }
+
+constructor TEndereco<T>.Create;
+begin
+
+end;
+
+destructor TEndereco<T>.Destroy;
+begin
+
+  inherited;
+end;
+
+class function TEndereco<T>.New: iEndereco<T>;
+begin
+  Result := Self.Create;
+end;
+
+end.
