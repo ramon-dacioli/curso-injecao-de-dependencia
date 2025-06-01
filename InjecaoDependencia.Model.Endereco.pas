@@ -8,6 +8,7 @@ uses
 type
   TEndereco<T: IInterface> = class(TInterfacedObject, iEndereco<T>)
   private
+    [Weak]
     FParent: T;
     FRua: String;
   public
@@ -37,7 +38,7 @@ end;
 
 function TEndereco<T>.&End: T;
 begin
-
+  Result := FParent;
 end;
 
 class function TEndereco<T>.New(Parent: T): iEndereco<T>;
@@ -47,12 +48,13 @@ end;
 
 function TEndereco<T>.Rua(aValue: String): iEndereco<T>;
 begin
-
+  Result := Self;
+  FRua := aValue;
 end;
 
 function TEndereco<T>.Rua: String;
 begin
-
+  Result := FRua;
 end;
 
 end.
