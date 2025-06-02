@@ -4,9 +4,6 @@ interface
 
 type
 
-  iCartao = interface;
-  iCrediario = interface;
-
   iEndereco<T> = interface
 
     ['{634F8680-DD50-473C-95ED-7AF92B4410B5}']
@@ -44,8 +41,6 @@ type
     function Valor ( aVlaue : Currency ) : iPagamento; overload;
     function Valor : Currency; overload;
     function Total : Currency; overload;
-    function Cartao : iCartao;
-    function Crediario : iCrediario;
 
   end;
 
@@ -69,8 +64,6 @@ type
 
     ['{AAA09296-9FFF-41B8-AD4F-428EFC055691}']
 
-    function Juros ( aValue : Boolean ) : iCrediario; overload;
-    function Juros : Boolean; overload;
     function &End : iPagamento;
 
   end;
