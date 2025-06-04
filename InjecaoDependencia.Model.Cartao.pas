@@ -6,18 +6,22 @@ uses
   InjecaoDependencia.Interfaces;
 
 type
-  TCartao = class(TInterfacedObject, iCartao, iRegras)
+  TCartao = class(TInterfacedObject, iCartao, iRegras, iVisitor)
     private
       [Weak]
       FParent : iPagamento;
+      FVIsist : iPagamento;
     public
       constructor Create(Parent : iPagamento);
       destructor Destroy; override;
       class function New(Parent : iPagamento) : iCartao;
 
       function &End : iPagamento;
+      function Visitor : iVisitor;
 
       function Total : Currency;
+
+      function Visit(aValue : iPagamento) : iRegras;
   end;
 
 implementation
@@ -48,6 +52,17 @@ end;
 function TCartao.Total: Currency;
 begin
   Result := 0;
+end;
+
+function TCartao.Visit(aValue: iPagamento): iRegras;
+begin
+  Result := Self;
+  FVIsist := aValue;
+end;
+
+function TCartao.Visitor: iVisitor;
+begin
+  Result := Self;
 end;
 
 end.

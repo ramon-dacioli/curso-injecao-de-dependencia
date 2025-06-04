@@ -6,11 +6,12 @@ uses
   InjecaoDependencia.Interfaces;
 
 type
-  TPagamento = class(TInterfacedObject, iPagamento, iRegras)
+  TPagamento = class(TInterfacedObject, iPagamento, iRegras, iVisitable)
   private
     FValor : Currency;
     FCrediario : iCrediario;
     FCartao : iCartao;
+    FVisitor : iVisitor;
   public
     constructor Create;
     destructor Destroy; override;
@@ -21,6 +22,8 @@ type
     function Total: Currency; overload;
     function Cartao: iCartao;
     function Crediario: iCrediario;
+
+    function Accept(aValue : iVisitor) : iRegras;
   end;
 
 implementation
@@ -29,10 +32,17 @@ implementation
 
 uses InjecaoDependencia.Model.Cartao, InjecaoDependencia.Model.Crediario;
 
+function TPagamento.Accept(aValue: iVisitor): iRegras;
+begin
+    FVisitor := aValue;
+    Result := FVisitor.Visit(Self);
+end;
+
 function TPagamento.Cartao: iCartao;
 begin
   FCartao := TCartao.New(Self);
   Result := FCartao;
+  Self.Accept(FCartao.Visitor);
 end;
 
 constructor TPagamento.Create;
@@ -44,6 +54,7 @@ function TPagamento.Crediario: iCrediario;
 begin
   FCrediario := TCreadiario.New(Self);
   Result := FCrediario;
+  Self.Accept(FCrediario.Visitor);
 end;
 
 destructor TPagamento.Destroy;

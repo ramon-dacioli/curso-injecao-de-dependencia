@@ -6,11 +6,12 @@ uses
   InjecaoDependencia.Interfaces;
 
 type
-  TCreadiario = class(TInterfacedObject, iCrediario, iRegras)
+  TCreadiario = class(TInterfacedObject, iCrediario, iRegras, iVisitor)
   private
     [Weak]
     FParent: iPagamento;
     FJuros: Boolean;
+    FVisit : iPagamento;
   public
     constructor Create(Parent: iPagamento);
     destructor Destroy; override;
@@ -19,8 +20,11 @@ type
     function Juros(aValue: Boolean): iCrediario; overload;
     function Juros: Boolean; overload;
     function &End: iPagamento;
+    function Visitor : iVisitor;
 
     function Total: Currency;
+
+    function Visit(aValue : iPagamento) : iRegras;
   end;
 
 implementation
@@ -61,7 +65,18 @@ end;
 
 function TCreadiario.Total: Currency;
 begin
+  Result := 0;
+end;
 
+function TCreadiario.Visit(aValue: iPagamento): iRegras;
+begin
+  Result := Self;
+  FVisit := aValue;
+end;
+
+function TCreadiario.Visitor: iVisitor;
+begin
+  Result := Self;
 end;
 
 end.

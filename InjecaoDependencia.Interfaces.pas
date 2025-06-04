@@ -6,6 +6,8 @@ type
 
   iCartao = interface;
   iCrediario = interface;
+  iPagamento = interface;
+  iRegras = interface;
 
   iEndereco<T> = interface
 
@@ -37,6 +39,22 @@ type
 
   end;
 
+  iVisitor = interface
+
+    ['{F43199D1-8DC0-4AD9-B7CE-A88AE0D35586}']
+
+    function Visit(aValue : iPagamento) : iRegras;
+
+  end;
+
+  iVisitable = interface
+
+    ['{FC17C6A7-6734-41C7-88B1-756B56AD0D26}']
+
+    function Accept(aValue : iVisitor) : iRegras;
+
+  end;
+
   iPagamento = interface
 
     ['{BF86DA02-398E-4838-95DD-DD1AFFD22EA8}']
@@ -62,6 +80,7 @@ type
     ['{369C79B7-E5C3-4D0B-8761-D610B1C858AE}']
 
     function &End : iPagamento;
+    function Visitor : iVisitor;
 
   end;
 
@@ -72,6 +91,7 @@ type
     function Juros ( aValue : Boolean ) : iCrediario; overload;
     function Juros : Boolean; overload;
     function &End : iPagamento;
+    function Visitor : iVisitor;
 
   end;
 
