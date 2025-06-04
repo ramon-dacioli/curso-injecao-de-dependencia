@@ -1,0 +1,51 @@
+unit InjecaoDependencia.Model.Cartao;
+
+interface
+
+uses
+  InjecaoDependencia.Interfaces;
+
+type
+  TCartao = class(TInterfacedObject, iCartao, iRegras)
+    private
+    public
+      constructor Create;
+      destructor Destroy; override;
+      class function New : iCartao;
+
+      function &End : iPagamento;
+
+      function Total : Currency;
+  end;
+
+implementation
+
+{ TCartao }
+
+constructor TCartao.Create;
+begin
+
+end;
+
+destructor TCartao.Destroy;
+begin
+
+  inherited;
+end;
+
+function TCartao.&End: iPagamento;
+begin
+
+end;
+
+class function TCartao.New: iCartao;
+begin
+  Result := Self.Create;
+end;
+
+function TCartao.Total: Currency;
+begin
+
+end;
+
+end.

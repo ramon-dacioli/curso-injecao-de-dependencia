@@ -1,5 +1,0 @@
-Principio da responsabilidade única e segregação de interfaces SOLIDS
-
-programação orientada a objeto
-
-

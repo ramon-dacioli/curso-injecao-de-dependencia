@@ -43,7 +43,7 @@ type
 
     function Valor ( aVlaue : Currency ) : iPagamento; overload;
     function Valor : Currency; overload;
-    function Total : Currency; overload;
+    function Total : Currency; //overload;
     function Cartao : iCartao;
     function Crediario : iCrediario;
 

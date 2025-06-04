@@ -1,0 +1,7 @@
+unit InjecaoDependencia.Model.Cartao;
+
+interface
+
+implementation
+
+end.

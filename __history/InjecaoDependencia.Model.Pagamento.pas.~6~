@@ -1,0 +1,72 @@
+unit InjecaoDependencia.Model.Pagamento;
+
+interface
+
+uses
+  InjecaoDependencia.Interfaces;
+
+type
+  TPagamento = class(TInterfacedObject, iPagamento, iRegras)
+  private
+    [Weak]
+    FValor : Currency;
+    FCrediario : iCrediario;
+    FCartao : iCartao;
+  public
+    constructor Create;
+    destructor Destroy; override;
+    class function New: iPagamento;
+
+    function Valor(aVlaue: Currency): iPagamento; overload;
+    function Valor: Currency; overload;
+    function Total: Currency; overload;
+    function Cartao: iCartao;
+    function Crediario: iCrediario;
+  end;
+
+implementation
+
+{ TPagamento }
+
+function TPagamento.Cartao: iCartao;
+begin
+
+end;
+
+constructor TPagamento.Create;
+begin
+
+end;
+
+function TPagamento.Crediario: iCrediario;
+begin
+
+end;
+
+destructor TPagamento.Destroy;
+begin
+
+  inherited;
+end;
+
+class function TPagamento.New: iPagamento;
+begin
+  Result := Self.Create;
+end;
+
+function TPagamento.Total: Currency;
+begin
+
+end;
+
+function TPagamento.Valor(aVlaue: Currency): iPagamento;
+begin
+
+end;
+
+function TPagamento.Valor: Currency;
+begin
+
+end;
+
+end.

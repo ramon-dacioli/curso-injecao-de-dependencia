@@ -1,0 +1,67 @@
+unit InjecaoDependencia.Model.Crediario;
+
+interface
+
+uses
+  InjecaoDependencia.Interfaces;
+
+type
+  TCreadiario = class(TInterfacedObject, iCrediario, iRegras)
+  private
+    [Weak]
+    FParent: iPagamento;
+    FJuros: Boolean;
+  public
+    constructor Create(Parent: iPagamento);
+    destructor Destroy; override;
+    class function New(Parent: iPagamento): iCrediario;
+
+    function Juros(aValue: Boolean): iCrediario; overload;
+    function Juros: Boolean; overload;
+    function &End: iPagamento;
+
+    function Total: Currency;
+  end;
+
+implementation
+
+{ TCreadiario }
+
+constructor TCreadiario.Create(Parent: iPagamento);
+begin
+  FParent := Parent;
+end;
+
+destructor TCreadiario.Destroy;
+begin
+
+  inherited;
+end;
+
+function TCreadiario.&End: iPagamento;
+begin
+  Result := FParent;
+end;
+
+function TCreadiario.Juros(aValue: Boolean): iCrediario;
+begin
+  Result := Self;
+  FJuros := aValue;
+end;
+
+function TCreadiario.Juros: Boolean;
+begin
+
+end;
+
+class function TCreadiario.New(Parent: iPagamento): iCrediario;
+begin
+  Result := Self.Create(Parent);
+end;
+
+function TCreadiario.Total: Currency;
+begin
+
+end;
+
+end.
