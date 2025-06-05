@@ -65,10 +65,7 @@ end;
 
 function TCreadiario.Total: Currency;
 begin
-  Result := FParent.Valor + (FParent.Valor * 0.3);
-
-  if FJuros then
-    Result := FParent.Valor + (FParent.Valor * 0.4);
+  Result := 0;
 end;
 
 function TCreadiario.Visit(aValue: iPagamento): iRegras;

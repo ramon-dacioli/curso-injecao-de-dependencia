@@ -42,7 +42,7 @@ function TPagamento.Cartao: iCartao;
 begin
   FCartao := TCartao.New(Self);
   Result := FCartao;
-  Self.Accept(FCartao.Visitor);
+  FVisitor := FCartao.Visitor;
 end;
 
 constructor TPagamento.Create;
@@ -54,7 +54,7 @@ function TPagamento.Crediario: iCrediario;
 begin
   FCrediario := TCreadiario.New(Self);
   Result := FCrediario;
-  Self.Accept(FCrediario.Visitor);
+  FVisitor := FCrediario.Visitor;
 end;
 
 destructor TPagamento.Destroy;
@@ -70,7 +70,7 @@ end;
 
 function TPagamento.Total: Currency;
 begin
-  Result := 0;
+  Result := FVisitor.Visit(Self).Total;
 end;
 
 function TPagamento.Valor(aVlaue: Currency): iPagamento;

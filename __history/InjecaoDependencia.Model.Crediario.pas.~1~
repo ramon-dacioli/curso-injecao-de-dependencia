@@ -1,7 +1,0 @@
-unit InjecaoDependencia.Model.Crediario;
-
-interface
-
-implementation
-
-end.
