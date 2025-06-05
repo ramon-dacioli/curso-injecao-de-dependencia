@@ -11,15 +11,8 @@ type
     Memo1: TMemo;
     Button1: TButton;
     Button2: TButton;
-    Edit1: TEdit;
-    Button3: TButton;
-    Button4: TButton;
-    Label1: TLabel;
-    CheckBox1: TCheckBox;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
-    procedure Button4Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -34,8 +27,7 @@ implementation
 {$R *.dfm}
 
 uses InjecaoDependencia.Model.PessoaFisica,
-  InjecaoDependencia.Model.PessoaJuridica, InjecaoDependencia.Interfaces,
-  InjecaoDependencia.Model.Pagamento;
+  InjecaoDependencia.Model.PessoaJuridica, InjecaoDependencia.Interfaces;
 
 procedure TForm1.Button1Click(Sender: TObject);
 var
@@ -61,31 +53,6 @@ begin
       .Rua('Rua dos bobos Juridicos');
 
   Memo1.Lines.Add(PJ.CNPJ + ' ' + PJ.Endereco.Rua);
-end;
-
-procedure TForm1.Button3Click(Sender: TObject);
-begin
-  Label1.Caption := CurrToStr(
-
-    TPagamento.New
-      .Valor(StrToCurr(Edit1.Text))
-      .Cartao
-      .&End
-      .Total
-  );
-end;
-
-procedure TForm1.Button4Click(Sender: TObject);
-begin
-  Label1.Caption := CurrToStr(
-
-    TPagamento.New
-      .Valor(StrToCurr(Edit1.Text))
-      .Crediario
-        .Juros(CheckBox1.Checked)
-      .&End
-      .Total
-  );
 end;
 
 end.

@@ -19,7 +19,6 @@ type
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
-    procedure Button4Click(Sender: TObject);
   private
     { Private declarations }
   public
@@ -70,19 +69,6 @@ begin
     TPagamento.New
       .Valor(StrToCurr(Edit1.Text))
       .Cartao
-      .&End
-      .Total
-  );
-end;
-
-procedure TForm1.Button4Click(Sender: TObject);
-begin
-  Label1.Caption := CurrToStr(
-
-    TPagamento.New
-      .Valor(StrToCurr(Edit1.Text))
-      .Crediario
-        .Juros(CheckBox1.Checked)
       .&End
       .Total
   );
